@@ -17,11 +17,12 @@ public class PlayerMove : MonoBehaviour
     [Header("Stats")]
     public float healthPoints;
     public Text playerHPText;
-    
+
     Rigidbody2D rig;
 
     bool grounded;
-    bool jump = false;
+    [HideInInspector]
+    public bool jump = false;
 
     [HideInInspector]
     public bool moveLeft;
@@ -84,11 +85,17 @@ public class PlayerMove : MonoBehaviour
 
 
         //Jump
+        if (jump && grounded)
+        {
+            rig.AddForce(new Vector2(0, jumpForce));
 
-        //if (Input.GetKeyDown(KeyCode.Space) && grounded)
-        //{
-        //    rig.AddForce(new Vector2(0, jumpForce));
-        //}
+            jump = false;
+        }
+        else if (!grounded)
+        {
+            jump = false;
+
+        }
 
         #endregion
 
@@ -106,7 +113,7 @@ public class PlayerMove : MonoBehaviour
     public void Damage(int damage)
     {
         healthPoints -= damage;
-        
+
        // rig.AddForce(new Vector2(200, 60));
     }
 

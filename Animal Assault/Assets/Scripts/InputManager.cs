@@ -47,13 +47,8 @@ public class InputManager : MonoBehaviour
                 {
                     pMove.moveLeft = false;
                     pMove.moveRight = false;
-                }
-                       
-
-
-
+                }                     
             }
-
         }
         else
         {
@@ -95,7 +90,11 @@ public class InputManager : MonoBehaviour
                 pMove.lookDown = false;
             }
 
-
+            // Jump
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                pMove.jump = true;
+            }
 
         }
 
