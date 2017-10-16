@@ -16,7 +16,7 @@ public class PlayerMove : MonoBehaviour
 
     [Header("Stats")]
     public float healthPoints;
-    public Text playerHPText;
+    public Slider playerHPBar;
 
     Rigidbody2D rig;
 
@@ -42,14 +42,8 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isP1)
-        {
-            playerHPText.text = "P1: " + healthPoints;
-        }
-        else
-        {
-            playerHPText.text = "P2: " + healthPoints;
-        }
+        // Slider Bar HP
+        playerHPBar.value = healthPoints;
 
         // Move and Jump region
         #region 
@@ -114,7 +108,7 @@ public class PlayerMove : MonoBehaviour
     {
         healthPoints -= damage;
 
-       // rig.AddForce(new Vector2(200, 60));
+        // rig.AddForce(new Vector2(200, 60));
     }
 
 }
